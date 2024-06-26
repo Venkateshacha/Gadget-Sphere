@@ -1,0 +1,27 @@
+
+<title>Admin Login</title>
+    
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white">Admin Login</div>
+                <div class="card-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="username" class="form-label">Username</label>
+                            <input type="text" class="form-control" name="username" placeholder="Enter your username" [(ngModel)]="username" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" class="form-control" name="password" placeholder="Enter your password" [(ngModel)]="password" required>
+                        </div>
+                        
+                        <button (click)="handleLogin()" class="btn btn-primary">Login</button>
+                        
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
