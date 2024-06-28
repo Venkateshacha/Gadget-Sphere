@@ -1,11 +1,7 @@
-
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-
-import { User } from './user';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserdataService } from '../../services/userdata.service';
-
 
 @Component({
   selector: 'app-userregistration',
@@ -13,10 +9,8 @@ import { UserdataService } from '../../services/userdata.service';
   styleUrls: ['./userregistration.component.css']
 })
 export class UserregistrationComponent implements OnInit {
-  user = new User("", "", "", "",0);
-  userForm: any;
+  userForm!: FormGroup; // Added ! to indicate it will be initialized
   registrationError: any;
-  
 
   constructor(
     private router: Router,
@@ -30,20 +24,22 @@ export class UserregistrationComponent implements OnInit {
       lname: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
-      mnumber:['',[Validators.required]],
+      mnumber: ['', Validators.required],
     });
   }
 
   addUser() {
     if (this.userForm.valid) {
       const formData = this.userForm.value;
-      this.user.firstName = formData.fname;
-      this.user.lastName = formData.lname;
-      this.user.emailId = formData.email;
-      this.user.password = formData.password;
-      this.user.mobileNo=formData.mnumber;
+      const user = {
+        firstName: formData.fname,
+        lastName: formData.lname,
+        emailId: formData.email,
+        password: formData.password,
+        mobileNo: formData.mnumber
+      };
 
-      this.userRegistrationService.adduser(this.user).subscribe(
+      this.userRegistrationService.adduser(user).subscribe(
         (data: any) => {
           console.log(data);
           // Display a confirmation message

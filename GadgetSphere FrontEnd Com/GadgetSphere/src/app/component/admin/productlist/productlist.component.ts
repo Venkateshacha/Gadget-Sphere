@@ -59,6 +59,8 @@ export class ProductlistComponent implements OnInit {
 
     }
 
+ 
+
   // button for add
   add() {
     this.router.navigate(['adminfind'])

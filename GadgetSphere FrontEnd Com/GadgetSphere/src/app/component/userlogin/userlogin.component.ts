@@ -62,9 +62,5 @@ export class UserloginComponent implements OnInit {
     console.log('Navigating to create account page');
     this.router.navigate(['createaccount']);
   }
-
-  forgotPass(): void {
-    console.log('Navigating to forgot password page');
-    this.router.navigate(['forgotpassword']);
-  }
+ 
 }
